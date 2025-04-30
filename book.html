@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Explore Varanasi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Navigation Bar Styles */
+        .navbar {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background: rgba(30, 60, 114, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            letter-spacing: 1px;
+        }
+
+        .navbar-brand i {
+            margin-right: 10px;
+            color: #ffd700;
+            font-size: 1.5rem;
+        }
+
+        .navbar-nav {
+            margin-left: auto;
+        }
+
+        .nav-item {
+            margin: 0 8px;
+            position: relative;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            padding: 8px 15px !important;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link i {
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+
+        .nav-link:hover {
+            color: #fff !important;
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            color: #fff !important;
+            font-weight: 600;
+        }
+
+        .nav-link.active:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 15px;
+            width: calc(100% - 30px);
+            height: 2px;
+            background: #ffd700;
+            border-radius: 2px;
+        }
+
+        .navbar-toggler {
+            border: none;
+            padding: 0.5rem;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("images/bo");
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            background: rgba(42, 82, 152, 0.95);
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 10px 0;
+            margin-top: 8px;
+        }
+
+        .dropdown-item {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 8px 20px;
+            transition: all 0.2s;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* Other styles remain the same */
+        .carousel-item img {
+            border: 5px solid #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            margin: auto;
+        }
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #343a40;
+            border-bottom: 3px solid #007bff;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        .package {
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+            transition: transform 0.3s ease-in-out;
+        }
+        .package:hover {
+            transform: scale(1.05);
+        }
+        .grid-view {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .list-view {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        body {
+            padding-top: 100px; /* Push content below fixed navbar */
+            background-color: #f0f4f8;
+        }
+
+        /* Modal Styles */
+        .modal-header {
+            background-color: #f0f4f8;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .modal-title {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .modal-body {
+            padding: 1rem;
+        }
+        .modal-footer {
+            border-top: 1px solid #dee2e6;
+            padding: 1rem;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .form-label {
+            font-weight: 500;
+            color: #34495e;
+        }
+        .form-control {
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            padding: 0.75rem;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+        }
+        .form-control:focus {
+            border-color: #4299e1;
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+            outline: none;
+        }
+        .form-text {
+            color: #718096;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        .form-check-label {
+            margin-left: 0.5rem;
+            color: #4a5568;
+            font-size: 1rem;
+        }
+        .form-check-input {
+            border-radius: 4px;
+            border: 1px solid #ced4da;
+            width: 1rem;
+            height: 1rem;
+            margin-top: 0.25rem;
+            transition: all 0.2s ease;
+        }
+        .form-check-input:checked {
+            background-color: #4299e1;
+            border-color: #4299e1;
+        }
+        .form-check-input:focus {
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+            outline: none;
+        }
+        #upiDetails {
+            margin-top: 1rem;
+            padding: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            background-color: #f7fafc;
+        }
+        #paymentMessage {
+            border-radius: 6px;
+            padding: 1rem;
+            font-weight: 500;
+        }
+        .btn-primary {
+            background-color: #4299e1;
+            border-color: #4299e1;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            font-weight: 600;
+        }
+        .btn-primary:hover {
+            background-color: #3182ce;
+            border-color: #3182ce;
+            transform: translateY(-1px);
+        }
+        .btn-primary:focus {
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+            outline: none;
+        }
+        .btn-secondary {
+            background-color: #e2e8f0;
+            border-color: #e2e8f0;
+            color: #4a5568;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            font-weight: 600;
+        }
+        .btn-secondary:hover {
+            background-color: #d1d8e0;
+            border-color: #d1d8e0;
+            transform: translateY(-1px);
+        }
+        .btn-secondary:focus {
+            box-shadow: 0 0 0 3px rgba(226, 232, 240, 0.3);
+            outline: none;
+        }
+        footer {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    font-size: 16px;
+    line-height: 1.6;
+}
+.footer a:hover {
+    color: #ffd700 !important;
+    text-decoration: underline;
+}
+
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-om"></i> Explore Varanasi
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="fas fa-info-circle"></i> About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="places.html">
+                            <i class="fas fa-map-marked-alt"></i> Places
+                        </a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallery.html">
+                            <i class="fas fa-images"></i> Gallery
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            <i class="fas fa-envelope"></i> Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 class="text-center mb-4">Travel Packages</h1>
+        <div class="d-flex justify-content-end mb-3">
+            <button class="btn btn-outline-primary" onclick="switchView('grid')">Grid View</button>
+            <button class="btn btn-outline-secondary ms-2" onclick="switchView('list')">List View</button>
+        </div>
+        <div id="packages" class="grid-view">
+            <div class="package card">
+                <img src="images/bo1.jpeg" class="card-img-top" alt="Budget Package Image">
+                <div class="card-body">
+                    <h3 class="card-title">Budget Package - 2D/1N</h3>
+                    <p class="card-text">Includes basic accommodation and guided city tour. Price: ₹3,999</p>
+                    <button class="btn btn-primary" onclick="showPayment('Budget', 3999)">Book Now</button>
+                </div>
+            </div>
+            <div class="package card">
+                <img src="images/bo2.jpeg" class="card-img-top" alt="Standard Package Image">
+                <div class="card-body">
+                    <h3 class="card-title">Standard Package - 3D/2N</h3>
+                    <p class="card-text">Includes 3-star hotel, meals, and city sightseeing. Price: ₹7,499</p>
+                    <button class="btn btn-primary" onclick="showPayment('Standard', 7499)">Book Now</button>
+                </div>
+            </div>
+            <div class="package card">
+                <img src="images/Designer.png" class="card-img-top" alt="Luxury Package Image">
+                <div class="card-body">
+                    <h3 class="card-title">Luxury Package - 5D/4N</h3>
+                    <p class="card-text">Includes 5-star accommodation, meals, private guide, and boat tour. Price: ₹15,999</p>
+                    <button class="btn btn-primary" onclick="showPayment('Luxury', 15999)">Book Now</button>
+                </div>
+            </div>
+            <div class="package card text-center">
+                <div class="card-body">
+                    <h3 class="card-title">More Packages Coming Soon!</h3>
+                    <p class="card-text">Stay tuned for exciting new travel experiences in Varanasi.</p>
+                    <button class="btn btn-secondary" disabled>Coming Soon</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="paymentModalLabel">Booking Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>You are booking the <strong id="packageType"></strong> package.</p>
+                    <p>Total amount: ₹<strong id="packagePrice"></strong></p>
+                    <div class="mb-3">
+                        <label for="paymentDate" class="form-label">Select your preferred travel date:</label>
+                        <input type="date" class="form-control" id="paymentDate" min="">
+                        <div id="dateHelp" class="form-text">Please select a date from today onwards.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                        <div id="emailHelp" class="form-text">We'll send your booking confirmation to this email.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Payment Mode</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="paymentMode" id="cash" value="cash" checked>
+                            <label class="form-check-label" for="cash">
+                                Cash (Pay at the location or arrange pickup)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="paymentMode" id="upi" value="upi">
+                            <label class="form-check-label" for="upi">
+                                UPI
+                            </label>
+                        </div>
+                    </div>
+                    <div id="upiDetails" style="display: none;">
+                        <label for="upiId" class="form-label">UPI ID</label>
+                        <input type="text" class="form-control" id="upiId" placeholder="Enter your UPI ID">
+                        <div id="upiHelp" class="form-text">Enter your BHIM UPI ID, Google Pay ID, PhonePe ID, etc.</div>
+                    </div>
+                    <div id="paymentMessage" class="mt-3 alert alert-info" style="display: none;"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="processBooking()">Confirm Booking</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchView(view) {
+            const packageContainer = document.getElementById("packages");
+            packageContainer.className = view === "grid" ? "grid-view" : "list-view";
+        }
+
+        function showPayment(packageType, price) { 
+            document.getElementById("packageType").textContent = packageType;
+            document.getElementById("packagePrice").textContent = price;
+
+           
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById("paymentDate").min = today;
+            document.getElementById("paymentDate").value = today; 
+
+            document.getElementById("cash").checked = true;
+            document.getElementById("upiDetails").style.display = 'none';
+            document.getElementById("paymentMessage").style.display = 'none';
+            document.getElementById("paymentMessage").textContent = '';
+            new bootstrap.Modal(document.getElementById("paymentModal")).show();
+        }
+
+        document.addEventListener('change', function(event) {
+            if (event.target && event.target.name === 'paymentMode') {
+                const upiDetailsDiv = document.getElementById('upiDetails');
+                upiDetailsDiv.style.display = event.target.value === 'upi' ? 'block' : 'none';
+            }
+        });
+
+        function processBooking() {
+            const packageType = document.getElementById("packageType").textContent;
+            const paymentDate = document.getElementById("paymentDate").value;
+            const email = document.getElementById("email").value;
+            const paymentMode = document.querySelector('input[name="paymentMode"]:checked').value;
+            let paymentDetails = {};
+            let bookingSuccessful = false; 
+            let errorMessage = '';
+
+             if (!paymentDate) {
+                errorMessage = 'Please select your preferred travel date.';
+            } else if (!email) {
+                errorMessage = 'Please enter your email address.';
+            } else if (paymentMode === 'upi') {
+                const upiId = document.getElementById("upiId").value;
+                if (!upiId) {
+                    errorMessage = 'Please enter your UPI ID.';
+                } else {
+                    paymentDetails = { mode: paymentMode, upiId: upiId };
+                    bookingSuccessful = true; 
+                }
+            } else if (paymentMode === 'cash') {
+                paymentDetails = { mode: paymentMode };
+                bookingSuccessful = true; 
+            }
+
+            if (errorMessage) {
+                displayPaymentMessage(errorMessage, 'danger');
+                return;
+            }
+            const price = document.getElementById("packagePrice").textContent;
+
+            console.log("Booking details for:", packageType);
+            console.log("Travel Date:", paymentDate);
+            console.log("Email:", email);
+            console.log("Payment Mode:", paymentMode);
+            console.log("Payment Details:", paymentDetails);
+            console.log("Amount:", price);
+
+            if (bookingSuccessful) {
+                displayPaymentMessage(`Booking for the ${packageType} package on ${paymentDate} with payment mode "${paymentMode}" is confirmed!\nWe have sent a confirmation to ${email}.`, 'success');
+                 setTimeout(() => {
+                    const paymentModal = bootstrap.Modal.getInstance(document.getElementById("paymentModal"));
+                    paymentModal.hide();
+                }, 3000);
+            } else {
+                displayPaymentMessage('There was an issue processing your booking. Please try again.', 'danger');
+            }
+        }
+
+        function displayPaymentMessage(message, type = 'info') {
+            const messageDiv = document.getElementById("paymentMessage");
+            messageDiv.textContent = message;
+            messageDiv.className = `mt-3 alert alert-${type}`;
+            messageDiv.style.display = 'block';
+        }
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('mainNav');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

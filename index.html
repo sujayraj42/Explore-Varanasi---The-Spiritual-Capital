@@ -6,7 +6,119 @@
     <title>Explore Varanasi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Navigation Bar Styles */
+        .navbar {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            background: rgba(30, 60, 114, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            letter-spacing: 1px;
+        }
+        
+        .navbar-brand i {
+            margin-right: 10px;
+            color: #ffd700;
+            font-size: 1.5rem;
+        }
+        
+        .navbar-nav {
+            margin-left: auto;
+        }
+        
+        .nav-item {
+            margin: 0 8px;
+            position: relative;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            padding: 8px 15px !important;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-link i {
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .nav-link:hover {
+            color: #fff !important;
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .nav-link.active {
+            color: #fff !important;
+            font-weight: 600;
+        }
+        
+        .nav-link.active:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 15px;
+            width: calc(100% - 30px);
+            height: 2px;
+            background: #ffd700;
+            border-radius: 2px;
+        }
+        
+        .navbar-toggler {
+            border: none;
+            padding: 0.5rem;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        
+        /* Dropdown Menu */
+        .dropdown-menu {
+            background: rgba(42, 82, 152, 0.95);
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 10px 0;
+            margin-top: 8px;
+        }
+        
+        .dropdown-item {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 8px 20px;
+            transition: all 0.2s;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        
+        /* Other styles remain the same */
         .carousel-item img {
             border: 5px solid #fff;
             border-radius: 15px;
@@ -29,35 +141,62 @@
             display: inline-block;
             padding-bottom: 10px;
         }
-        .navbar-brand {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #f8f9fa;
-        }
+        .footer {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    font-size: 16px;
+    line-height: 1.6;
+}
+.footer a:hover {
+    color: #ffd700 !important;
+    text-decoration: underline;
+}
+
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+    <!-- Enhanced Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#">Explore Varanasi</a>
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-om"></i> Explore Varanasi
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="places.html">Places</a></li>
-                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="fas fa-info-circle"></i> About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="places.html">
+                            <i class="fas fa-map-marked-alt"></i> Places
+                        </a>
+                       
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallery.html">
+                            <i class="fas fa-images"></i> Gallery
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            <i class="fas fa-envelope"></i> Contact
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section (Image Slider) -->
-    <div id="heroCarousel" class="carousel slide mt-5" data-bs-ride="carousel">
+     <div id="heroCarousel" class="carousel slide mt-5" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
@@ -90,10 +229,35 @@
             <span class="carousel-control-next-icon"></span>
         </button>
     </div>
+    </div>
+    
     <section class="container text-center my-5" id="about">
         <h2 class="section-title">Welcome to Varanasi</h2>
         <p class="lead">Varanasi, the spiritual capital of India, is known for its historic ghats, mesmerizing Ganga Aarti, and ancient temples. Explore its timeless beauty and sacred culture.</p>
-        <a href="places.html" class="btn btn-primary btn-lg">Explore Places</a>
+        <a href="book.html" class="btn btn-primary btn-lg">Book Packages</a>
     </section>
+   
+    <footer class="text-center text-white py-2" style="background-color: #1e3c72; font-size: 14px;">
+        <div class="container">
+            <small>© 2025 Explore Varanasi</small>
+            <div class="mt-1">
+                <a href="#" class="text-white mx-1"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white mx-1"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white mx-1"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('mainNav');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
