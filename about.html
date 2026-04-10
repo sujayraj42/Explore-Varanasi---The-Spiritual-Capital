@@ -3,270 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Explore Varanasi</title>
+    <meta name="description" content="Learn about Varanasi's rich history, cultural importance, and famous personalities">
+    <title>About Varanasi - History & Culture</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body {
-            background: url('images/bg1.jpg') no-repeat center center/cover;
-            background-color: rgba(0, 0, 0, 0.15);
-            background-blend-mode: overlay;
-            padding-top: 70px;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* Navigation Bar Styles */
-        .navbar {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
-            padding: 10px 0;
-            transition: all 0.3s ease;
-            width: 100%;
-            position: fixed;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .navbar.scrolled {
-            padding: 5px 0;
-            background: rgba(30, 60, 114, 0.95);
-            backdrop-filter: blur(10px);
-        }
-
-        .navbar-brand {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            letter-spacing: 1px;
-        }
-
-        .navbar-brand i {
-            margin-right: 8px;
-            color: #ffd700;
-            font-size: 1.2rem;
-        }
-
-        .navbar-nav {
-            margin-left: auto;
-        }
-
-        .nav-item {
-            margin: 0 5px;
-            position: relative;
-        }
-
-        .nav-link {
-            color: rgba(255, 255, 255, 0.9) !important;
-            font-weight: 500;
-            padding: 8px 12px !important;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            position: relative;
-            display: flex;
-            align-items: center;
-            font-size: 0.95rem;
-        }
-
-        .nav-link i {
-            margin-right: 5px;
-            font-size: 0.8rem;
-        }
-
-        .nav-link:hover {
-            color: #fff !important;
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
-        }
-
-        .nav-link.active {
-            color: #fff !important;
-            font-weight: 600;
-        }
-
-        .nav-link.active:after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 10px;
-            width: calc(100% - 20px);
-            height: 2px;
-            background: #ffd700;
-            border-radius: 2px;
-        }
-
-        .navbar-toggler {
-            border: none;
-            padding: 0.5rem;
-        }
-
-        .navbar-toggler:focus {
-            box-shadow: none;
-        }
-
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
-
-        /* Dropdown Menu */
-        .dropdown-menu {
-            background: rgba(42, 82, 152, 0.95);
-            border: none;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            padding: 10px 0;
-            margin-top: 8px;
-        }
-
-        .dropdown-item {
-            color: rgba(255, 255, 255, 0.8);
-            padding: 8px 20px;
-            transition: all 0.2s;
-        }
-
-        .dropdown-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-        }
-
-        /* General Styles */
-        .hero-title {
-            font-size: 2.5rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            margin-bottom: 1rem;
-            color: #fff;
-            text-align: center;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #343a40;
-            border-bottom: 2px solid #007bff;
-            display: inline-block;
-            padding-bottom: 8px;
-            margin-top: 2rem;
-            transition: color 0.3s ease, border-bottom-color 0.3s ease;
-        }
-
-        .section-title:hover {
-            color: #0056b3;
-            border-bottom-color: #003e80;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 25px;
-        }
-
-        .grid-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.8);
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .grid-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .grid-item img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 10px;
-            transition:  0.3s ease-in-out;
-            min-width: 150px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            border: 3px solid #fff;
-        }
-
-
-        .grid-item h2 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #007bff;
-            margin-bottom: 0.75rem;
-            transition: color 0.3s ease;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
-        }
-
-        .grid-item h2:hover {
-            color: #004080;
-        }
-
-        .grid-item p {
-            font-size: 1rem;
-            color: #030303;
-            margin-bottom: 0;
-            line-height: 1.6;
-        }
-
-        .footer {
-            text-align: center;
-            color: #fff;
-            padding: 10px 0;
-            background-color: #1e3c72;
-            font-size: 0.9rem;
-            margin-top: 2rem;
-        }
-
-        .footer .container {
-            max-width: 100%;
-        }
-
-        @media (max-width: 768px) {
-            .navbar-brand {
-                font-size: 1.2rem;
-            }
-
-            .nav-link {
-                font-size: 0.9rem;
-                padding: 6px 10px !important;
-            }
-
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-            }
-
-            .grid-item {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .grid-item img {
-                width: 100%;
-                max-width: 300px;
-                height: auto;
-            }
-             .carousel-item img{
-                height: 300px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.html">
                 <i class="fas fa-om"></i> Explore Varanasi
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -275,12 +22,12 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html">
+                        <a class="nav-link" href="index.html">
                             <i class="fas fa-home"></i> Home
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">
+                        <a class="nav-link active" href="about.html">
                             <i class="fas fa-info-circle"></i> About
                         </a>
                     </li>
@@ -304,51 +51,121 @@
         </div>
     </nav>
 
-    <div class="container mt-5">
-        <h1 class="hero-title">Discover the Spiritual Heart of India</h1>
+    <!-- Hero Section -->
+    <div class="container mt-5 mb-5">
+        <h1 class="page-title fade-in">Discover the Spiritual Heart of India</h1>
     </div>
 
-    <div class="container">
-        <h1 class="section-title text-center">About Varanasi</h1>
-        <div class="grid-container">
-            <div class="grid-item">
-                <img src="images/a1.jpg" alt="Ganges River">
-                <div>
-                    <h2>History of Varanasi</h2>
+    <!-- About Content -->
+    <section class="container mb-5">
+        <h2 class="section-title text-center">About Varanasi</h2>
+        <div class="row g-4 mt-4">
+            <!-- History -->
+            <div class="col-lg-6 col-md-12">
+                <div class="glass-card">
+                    <img src="images/a1.jpg" alt="Ganges River" class="mb-3 rounded" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3 style="color: #ffd700; margin-bottom: 15px;">
+                        <i class="fas fa-history"></i> History of Varanasi
+                    </h3>
                     <p>Varanasi, also known as Kashi or Banaras, is one of the oldest continuously inhabited cities in the world. With a history spanning over 3,000 years, it has been a center of spirituality, learning, and culture. The city's mention in ancient texts, including the Rigveda, solidifies its deep-rooted significance in Indian heritage.</p>
                 </div>
             </div>
 
-            <div class="grid-item">
-                <img src="images/a2.jpg" alt="Kashi Vishwanath Temple">
-                <div>
-                    <h2>Importance in Hindu Culture</h2>
+            <!-- Importance -->
+            <div class="col-lg-6 col-md-12">
+                <div class="glass-card">
+                    <img src="images/a2.jpg" alt="Kashi Vishwanath Temple" class="mb-3 rounded" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3 style="color: #ffd700; margin-bottom: 15px;">
+                        <i class="fas fa-om"></i> Importance in Hindu Culture
+                    </h3>
                     <p>Varanasi is considered the spiritual heart of India. The sacred river Ganges flows through the city, attracting devotees who perform rituals and prayers. The Kashi Vishwanath Temple, dedicated to Lord Shiva, stands as a beacon of devotion and pilgrimage, with thousands visiting daily for blessings and spiritual enlightenment.</p>
                 </div>
             </div>
 
-            <div class="grid-item">
-                <img src="images/a3.jpg" alt="Banaras Hindu University">
-                <div>
-                    <h2>Famous Personalities Associated with Varanasi</h2>
-                    <p>Varanasi has been home to many influential figures, including poet Tulsidas, musician Ravi Shankar, and shehnai maestro Bismillah Khan. It is also the birthplace of Pandit Madan Mohan Malaviya, the visionary behind Banaras Hindu University (BHU), which remains one of India's most esteemed educational institutions.</p>
+            <!-- Famous Personalities -->
+            <div class="col-lg-12">
+                <div class="glass-card">
+                    <img src="images/a3.jpg" alt="Banaras Hindu University" class="mb-3 rounded" style="width: 100%; height: 250px; object-fit: cover;">
+                    <h3 style="color: #ffd700; margin-bottom: 15px;">
+                        <i class="fas fa-star"></i> Famous Personalities Associated with Varanasi
+                    </h3>
+                    <p>Varanasi has been home to many influential figures, including poet Tulsidas, musician Ravi Shankar, and shehnai maestro Bismillah Khan. It is also the birthplace of Pandit Madan Mohan Malaviya, the visionary behind Banaras Hindu University (BHU), which remains one of India's most esteemed educational institutions. The city continues to be a source of inspiration for artists, poets, and scholars from around the world.</p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <footer class="footer mt-auto">
+    <!-- Key Facts Section -->
+    <section class="container mb-5">
+        <h2 class="section-title text-center">Key Facts</h2>
+        <div class="row g-4 mt-4">
+            <div class="col-md-3 col-sm-6">
+                <div class="glass-card text-center">
+                    <i class="fas fa-gopuram" style="font-size: 2rem; color: #ffd700; margin-bottom: 10px;"></i>
+                    <h5>80+ Ghats</h5>
+                    <p style="font-size: 0.9rem;">Sacred riverbank steps</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="glass-card text-center">
+                    <i class="fas fa-users" style="font-size: 2rem; color: #ffd700; margin-bottom: 10px;"></i>
+                    <h5>1 Million+</h5>
+                    <p style="font-size: 0.9rem;">Annual pilgrims</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="glass-card text-center">
+                    <i class="fas fa-calendar-alt" style="font-size: 2rem; color: #ffd700; margin-bottom: 10px;"></i>
+                    <h5>3000+ Years</h5>
+                    <p style="font-size: 0.9rem;">Of continuous history</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="glass-card text-center">
+                    <i class="fas fa-pray" style="font-size: 2rem; color: #ffd700; margin-bottom: 10px;"></i>
+                    <h5>100+ Temples</h5>
+                    <p style="font-size: 0.9rem;">Spiritual centers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-5">
         <div class="container">
-            <small>© 2025 Explore Varanasi</small>
-            <div class="mt-1">
-                <a href="#" class="text-white mx-1"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="text-white mx-1"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-white mx-1"><i class="fab fa-twitter"></i></a>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5><i class="fas fa-om"></i> Explore Varanasi</h5>
+                    <p>Your gateway to spiritual India</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Quick Links</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="places.html">Places</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Follow Us</h5>
+                    <div class="d-flex gap-2">
+                        <a href="#" class="btn btn-sm btn-secondary"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-sm btn-secondary"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="btn btn-sm btn-secondary"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255, 255, 255, 0.1);">
+            <div class="text-center">
+                <small>&copy; 2025 Explore Varanasi. All rights reserved.</small>
             </div>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('mainNav');
             if (window.scrollY > 50) {

@@ -1,0 +1,31 @@
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+.atom/
+
+# OS
+.DS_Store
+Thumbs.db
+.env.local
+
+# Dependencies (if Node.js used in future)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build files
+dist/
+build/
+
+# IDE specific
+*.iml
+
+# Temporary files
+*.tmp
+*.bak
