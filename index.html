@@ -1,211 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Explore Varanasi - Discover the spiritual heart of India with our comprehensive travel guide">
-    <meta name="keywords" content="Varanasi, travel, tourism, ghats, temples, spiritual">
-    <title>Explore Varanasi - Spiritual Capital of India</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FF6B00">
+  <meta name="description" content="Discover Varanasi, the ancient spiritual capital of India. Explore the sacred ghats, temples, Ganga Aarti, and the eternal city of Kashi on the banks of the sacred River Ganga.">
+
+  <meta property="og:title" content="Explore Varanasi — The Spiritual Capital of India">
+  <meta property="og:description" content="Discover Varanasi, the ancient spiritual capital of India. Explore the sacred ghats, temples, Ganga Aarti, and the eternal city of Kashi.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <title>Explore Varanasi — The Spiritual Capital of India</title>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <i class="fas fa-om"></i> Explore Varanasi
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">
-                            <i class="fas fa-home"></i> Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">
-                            <i class="fas fa-info-circle"></i> About
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="places.html">
-                            <i class="fas fa-map-marked-alt"></i> Places
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="gallery.html">
-                            <i class="fas fa-images"></i> Gallery
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">
-                            <i class="fas fa-envelope"></i> Contact
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="book.html">
-                            <i class="fas fa-ticket"></i> Book
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Carousel -->
-    <div class="container mt-5 mb-5">
-        <div id="heroCarousel" class="carousel slide fade-in" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
-            </div>
-            <div class="carousel-inner text-center">
-                <div class="carousel-item active">
-                    <img src="images/i1.png" class="d-block w-100" alt="Ghat">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h1 class="hero-title">Discover the Beauty of Varanasi</h1>
-                        <p class="lead">The Spiritual Heart of India</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/i2.jpg" class="d-block w-100" alt="Temple">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h1 class="hero-title">Experience the Sacred Temples</h1>
-                        <p class="lead">Centuries of Devotion and Spirituality</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/i3.jpg" class="d-block w-100" alt="Ganga Aarti">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h1 class="hero-title">Witness the Majestic Ganga Aarti</h1>
-                        <p class="lead">An Unforgettable Spiritual Experience</p>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
-        </div>
-    </div>
-
-    <!-- Welcome Section -->
-    <section class="container mb-5">
-        <div class="glass-card text-center">
-            <h2 class="section-title">Welcome to Varanasi</h2>
-            <p class="lead mt-4" style="font-size: 1.1rem; line-height: 1.8;">
-                Varanasi, the spiritual capital of India, is known for its historic ghats, mesmerizing Ganga Aarti, and ancient temples.
-                Explore its timeless beauty and sacred culture with us. Every corner of this city holds stories of devotion, history, and spirituality.
-            </p>
-            <div class="row g-4 mt-4">
-                <div class="col-md-4">
-                    <div class="glass-card">
-                        <i class="fas fa-gopuram" style="font-size: 2.5rem; color: #ffd700; margin-bottom: 15px;"></i>
-                        <h5>Ancient Temples</h5>
-                        <p style="font-size: 0.9rem;">Witness the spiritual power of sacred temples</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="glass-card">
-                        <i class="fas fa-water" style="font-size: 2.5rem; color: #ffd700; margin-bottom: 15px;"></i>
-                        <h5>Holy Ghats</h5>
-                        <p style="font-size: 0.9rem;">Experience the sacred Ganges river</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="glass-card">
-                        <i class="fas fa-fire" style="font-size: 2.5rem; color: #ffd700; margin-bottom: 15px;"></i>
-                        <h5>Ganga Aarti</h5>
-                        <p style="font-size: 0.9rem;">Witness the divine evening ritual</p>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-4">
-                <a href="book.html" class="btn btn-primary btn-lg">
-                    <i class="fas fa-ticket-alt"></i> Book Your Journey
-                </a>
-                <a href="about.html" class="btn btn-secondary btn-lg ms-3">
-                    <i class="fas fa-arrow-right"></i> Learn More
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Section -->
-    <section class="container mb-5">
-        <h2 class="section-title text-center">Why Visit Varanasi?</h2>
-        <div class="row g-4 mt-4">
-            <div class="col-lg-6">
-                <div class="glass-card">
-                    <h4 style="color: #ffd700; margin-bottom: 15px;">
-                        <i class="fas fa-bookmark"></i> Spiritual Significance
-                    </h4>
-                    <p>Varanasi is one of the seven sacred cities in Hinduism. Millions of pilgrims visit annually to perform rituals and seek spiritual enlightenment on the banks of the Holy Ganges.</p>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="glass-card">
-                    <h4 style="color: #ffd700; margin-bottom: 15px;">
-                        <i class="fas fa-landmark"></i> Historical Importance
-                    </h4>
-                    <p>With over 3000 years of history, Varanasi is one of the oldest continuously inhabited cities in the world. The city stands as a testament to India's rich cultural heritage.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="mt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-3">
-                    <h5><i class="fas fa-om"></i> Explore Varanasi</h5>
-                    <p>Your gateway to spiritual India</p>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <h5>Quick Links</h5>
-                    <ul style="list-style: none; padding: 0;">
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="places.html">Places</a></li>
-                        <li><a href="gallery.html">Gallery</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <h5>Follow Us</h5>
-                    <div class="d-flex gap-2">
-                        <a href="#" class="btn btn-sm btn-secondary"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="btn btn-sm btn-secondary"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="btn btn-sm btn-secondary"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-            </div>
-            <hr style="border-color: rgba(255, 255, 255, 0.1);">
-            <div class="text-center">
-                <small>&copy; 2025 Explore Varanasi. All rights reserved.</small>
-            </div>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('mainNav');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-    </script>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>

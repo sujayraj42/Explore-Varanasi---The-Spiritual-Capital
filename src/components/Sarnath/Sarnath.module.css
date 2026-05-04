@@ -1,0 +1,169 @@
+.sarnath {
+  background: var(--deep-navy);
+  background-image: radial-gradient(ellipse at 70% 50%, rgba(100, 149, 237, 0.05) 0%, transparent 60%);
+  position: relative;
+  overflow: hidden;
+}
+
+.wheel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40vw;
+  opacity: 0.025;
+  color: var(--gold);
+  animation: spinReverse 40s linear infinite;
+  pointer-events: none;
+  line-height: 1;
+  user-select: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  gap: 4rem;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+.imageColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mainImage {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-gold);
+}
+
+.mainImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.secondaryImage {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-gold);
+  max-width: 80%;
+  align-self: flex-end;
+}
+
+.secondaryImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.textColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-family: var(--font-accent);
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--saffron);
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.body p {
+  font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+  line-height: 1.85;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+}
+
+.insetCard {
+  margin-top: 1.5rem;
+  background: rgba(26, 39, 68, 0.6);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+}
+
+.insetCard img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+}
+
+.insetCard p {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 2rem;
+  font-family: var(--font-accent);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 14px 32px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.cta:hover {
+  background: var(--gold);
+  color: var(--midnight);
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .imageColumn {
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .secondaryImage {
+    max-width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .wheel {
+    font-size: 60vw;
+  }
+
+  .secondaryImage {
+    max-width: 80%;
+  }
+}
