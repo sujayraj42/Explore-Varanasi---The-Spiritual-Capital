@@ -1,0 +1,3 @@
+## 2025-01-20 - Hide off-canvas menus from tab sequence
+**Learning:** Using `opacity: 0` and `pointer-events: none` on mobile menus visually hides them but leaves their interactive elements in the tab sequence. This creates keyboard accessibility issues where focus gets "trapped" in invisible elements and screen readers announce them inappropriately. Furthermore, using `visibility: hidden` breaks CSS transitions when hiding, causing immediate visual disappearance.
+**Action:** Always combine visual hiding with the `inert` attribute (e.g., `inert={!isOpen ? "" : undefined}`) and `aria-hidden={!isOpen}` for the off-canvas state to completely remove it from the accessibility tree and tab order without breaking smooth CSS transitions.
