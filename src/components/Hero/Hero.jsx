@@ -1,13 +1,10 @@
 import React, { useMemo } from 'react';
-import useParallax from '../../hooks/useParallax';
 import SectionLabel from '../shared/SectionLabel';
 import ScrollIndicator from '../shared/ScrollIndicator';
-import heroBg from '../../assets/images/hero-bg.jpg';
+import ParallaxBackground from './ParallaxBackground';
 import styles from './Hero.module.css';
 
 export default function Hero() {
-  const parallaxOffset = useParallax(0.4);
-
   const diyaParticles = useMemo(() => {
     return Array.from({ length: 25 }, (_, i) => ({
       id: i,
@@ -37,13 +34,7 @@ export default function Hero() {
       className={styles.hero}
       style={{ position: 'relative', overflow: 'hidden' }}
     >
-      <div
-        className={styles.bgImage}
-        style={{
-          backgroundImage: `url(${heroBg})`,
-          backgroundPositionY: `${parallaxOffset}px`,
-        }}
-      />
+      <ParallaxBackground />
       <div className={styles.overlay1} />
       <div className={styles.overlay2} />
 
