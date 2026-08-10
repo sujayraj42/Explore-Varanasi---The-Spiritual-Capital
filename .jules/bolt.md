@@ -1,0 +1,3 @@
+## 2024-05-19 - Scroll Hook Re-render Optimization
+**Learning:** Using a custom hook that returns a raw, continuously changing value like `window.scrollY` will cause the consuming component to re-render on every single scroll frame. In components like `Navbar`, which only need to know if the scroll position has passed a certain threshold, this causes massive, unnecessary re-rendering.
+**Action:** Always optimize scroll listeners or frequent event listeners. Have the custom hook accept a threshold and return a boolean instead. Since React bails out of state updates if the new state strictly equals the old state, the hook will only trigger a re-render when the threshold is crossed, vastly improving performance during scrolling.
