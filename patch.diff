@@ -1,0 +1,27 @@
+--- src/components/Navbar/Navbar.jsx
++++ src/components/Navbar/Navbar.jsx
+@@ -82,6 +82,8 @@
+           className={`${styles.hamburger} ${isMenuOpen ? styles.open : ''}`}
+           onClick={() => setIsMenuOpen(!isMenuOpen)}
+           aria-label="Toggle navigation menu"
++          aria-expanded={isMenuOpen}
++          aria-controls="mobile-menu"
+         >
+           <span />
+           <span />
+@@ -89,12 +91,15 @@
+         </button>
+       </div>
+
+       <div
++        id="mobile-menu"
+         className={styles.mobileMenu}
++        aria-hidden={!isMenuOpen}
+         style={{
+           transform: isMenuOpen ? 'translateY(0)' : 'translateY(-100%)',
+           opacity: isMenuOpen ? 1 : 0,
+           pointerEvents: isMenuOpen ? 'all' : 'none',
++          visibility: isMenuOpen ? 'visible' : 'hidden',
+         }}
+       >
+         {NAV_LINKS.map((link) => (
