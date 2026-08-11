@@ -25,7 +25,8 @@
   transition: transform 0.6s ease;
 }
 
-.imageWrapper:hover img {
+.imageWrapper:hover img,
+.imageWrapper:focus-visible img {
   transform: scale(1.08);
 }
 
@@ -40,7 +41,8 @@
   padding: 20px;
 }
 
-.imageWrapper:hover .overlay {
+.imageWrapper:hover .overlay,
+.imageWrapper:focus-visible .overlay {
   opacity: 1;
 }
 
@@ -49,7 +51,8 @@
   transition: transform 0.4s ease;
 }
 
-.imageWrapper:hover .overlayContent {
+.imageWrapper:hover .overlayContent,
+.imageWrapper:focus-visible .overlayContent {
   transform: translateY(0);
 }
 

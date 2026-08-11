@@ -14,7 +14,10 @@ export default function GalleryItem({ item, delay }) {
         opacity: isVisible ? 1 : 0,
       }}
     >
-      <div className={styles.imageWrapper}>
+      <div
+        className={styles.imageWrapper}
+        tabIndex={0}
+      >
         <img
           src={item.image}
           alt={item.title}
