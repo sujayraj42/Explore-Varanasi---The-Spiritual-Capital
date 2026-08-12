@@ -19,6 +19,18 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
+  // Handle escape key to close menu
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isMenuOpen]);
+
   // Scroll spy
   useEffect(() => {
     const sections = document.querySelectorAll('section[id]');
@@ -95,6 +107,8 @@ export default function Navbar() {
           className={`${styles.hamburger} ${isMenuOpen ? styles.open : ''}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle navigation menu"
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
         >
           <span />
           <span />
@@ -103,6 +117,7 @@ export default function Navbar() {
       </div>
 
       <div
+        id="mobile-menu"
         className={styles.mobileMenu}
         style={{
           transform: isMenuOpen ? 'translateY(0)' : 'translateY(-100%)',
