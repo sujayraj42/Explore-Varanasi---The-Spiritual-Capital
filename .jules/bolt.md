@@ -1,0 +1,3 @@
+## 2024-05-24 - High-Frequency State Updates from Hooks
+**Learning:** Using hooks that update state frequently (like `useParallax` or `useScrollPosition`) at the top level of a large component causes the entire component (and its children, unless memoized) to re-render on every state update. In this codebase, `useParallax` in `Hero.jsx` caused continuous re-renders of complex DOM elements during scroll.
+**Action:** Always extract components that use high-frequency updating hooks (like scroll, mouse move) into small, isolated leaf components. This confines the re-renders to only the elements that actually need to update.
