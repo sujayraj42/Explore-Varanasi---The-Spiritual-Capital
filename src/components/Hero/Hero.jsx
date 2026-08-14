@@ -6,7 +6,7 @@ import heroBg from '../../assets/images/hero-bg.jpg';
 import styles from './Hero.module.css';
 
 export default function Hero() {
-  const parallaxOffset = useParallax(0.4);
+  const parallaxRef = useParallax(0.4);
 
   const diyaParticles = useMemo(() => {
     return Array.from({ length: 25 }, (_, i) => ({
@@ -38,10 +38,10 @@ export default function Hero() {
       style={{ position: 'relative', overflow: 'hidden' }}
     >
       <div
+        ref={parallaxRef}
         className={styles.bgImage}
         style={{
           backgroundImage: `url(${heroBg})`,
-          backgroundPositionY: `${parallaxOffset}px`,
         }}
       />
       <div className={styles.overlay1} />

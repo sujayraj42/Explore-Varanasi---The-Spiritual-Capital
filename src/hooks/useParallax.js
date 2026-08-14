@@ -1,20 +1,34 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 export default function useParallax(speed = 0.4) {
-  const [offset, setOffset] = useState(0);
+  const ref = useRef(null);
 
   useEffect(() => {
+    let ticking = false;
+
     function handleScroll() {
-      setOffset(window.scrollY * speed);
+      if (!ticking && ref.current) {
+        requestAnimationFrame(() => {
+          if (ref.current) {
+            ref.current.style.backgroundPositionY = `${window.scrollY * speed}px`;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+
+    // Initial position
+    if (ref.current) {
+        ref.current.style.backgroundPositionY = `${window.scrollY * speed}px`;
+    }
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [speed]);
 
-  return offset;
+  return ref;
 }
