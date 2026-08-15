@@ -1,0 +1,3 @@
+## 2024-05-24 - Unthrottled scroll events in useParallax
+**Learning:** `useParallax` was firing synchronous React state updates (`setOffset`) on every single scroll event. The browser fires scroll events at a high rate, and this can lead to jank or high CPU usage if state is set synchronously on each event, forcing React to try rendering frequently.
+**Action:** Always throttle high-frequency events like scroll or resize, usually via `requestAnimationFrame` before triggering state updates, to align with the browser's render cycle.
