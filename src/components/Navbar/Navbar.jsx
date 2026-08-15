@@ -95,6 +95,8 @@ export default function Navbar() {
           className={`${styles.hamburger} ${isMenuOpen ? styles.open : ''}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle navigation menu"
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
         >
           <span />
           <span />
@@ -103,7 +105,9 @@ export default function Navbar() {
       </div>
 
       <div
+        id="mobile-menu"
         className={styles.mobileMenu}
+        aria-hidden={!isMenuOpen}
         style={{
           transform: isMenuOpen ? 'translateY(0)' : 'translateY(-100%)',
           opacity: isMenuOpen ? 1 : 0,
@@ -116,6 +120,7 @@ export default function Navbar() {
             href={link.href}
             className={styles.mobileLink}
             onClick={(e) => handleLinkClick(e, link.href)}
+            tabIndex={isMenuOpen ? 0 : -1}
           >
             {link.label}
           </a>
@@ -124,6 +129,7 @@ export default function Navbar() {
           href="#visit"
           className={styles.mobileCta}
           onClick={(e) => handleLinkClick(e, '#visit')}
+          tabIndex={isMenuOpen ? 0 : -1}
         >
           Plan Your Visit
         </a>
