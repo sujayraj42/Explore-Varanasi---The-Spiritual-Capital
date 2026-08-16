@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import useScrollPosition from '../../hooks/useScrollPosition';
 import styles from './Navbar.module.css';
 
 const NAV_LINKS = [
@@ -14,9 +13,32 @@ const NAV_LINKS = [
 ];
 
 export default function Navbar() {
-  const scrollY = useScrollPosition();
-  const isScrolled = scrollY > 80;
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Performance optimization:
+  // Instead of causing a re-render on every pixel scrolled (via useScrollPosition),
+  // we only update state when crossing the 80px threshold.
+  useEffect(() => {
+    let ticking = false;
+
+    function handleScroll() {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 80);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   const [activeSection, setActiveSection] = useState('home');
 
   // Scroll spy
