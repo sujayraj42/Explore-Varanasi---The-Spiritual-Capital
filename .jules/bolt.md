@@ -1,0 +1,3 @@
+## 2026-08-17 - Scroll State React Bailout Pattern
+**Learning:** Using React state to track exact scroll positions (`window.scrollY`) causes massive numbers of re-renders, especially on components like Navbars. In this codebase, `Navbar` re-rendered on every animation frame during scroll.
+**Action:** When scroll position is only needed to trigger a threshold-based style change (like making a navbar solid), return a boolean (`scrollY > threshold`) from the hook instead of the exact position. React will automatically bail out of state updates when the boolean value hasn't changed, naturally debouncing the renders.
