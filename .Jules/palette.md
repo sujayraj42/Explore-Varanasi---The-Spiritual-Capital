@@ -1,0 +1,3 @@
+## 2026-08-17 - Hamburger Menu Accessibility
+**Learning:** React state-driven mobile menus (like the one in `Navbar.jsx`) often rely on visual cues (CSS transforms/opacity) to show/hide the menu, which screen readers cannot interpret. An `aria-label` is not enough for an expand/collapse toggle.
+**Action:** Always pair `aria-expanded={isOpen}` with `aria-controls="menu-id"` on the toggle button, and add the corresponding `id="menu-id"` to the menu container, ensuring screen readers understand the state and relationship.
