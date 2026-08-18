@@ -1,0 +1,3 @@
+## 2025-01-20 - Ensuring Visually Hidden Mobile Menus are Ignored by Assistive Tech
+**Learning:** When creating a visually hidden dynamic menu (e.g., using `transform` or `opacity` for a slide-in menu), screen readers and keyboard navigation still consider its links focusable unless explicitly handled. This forces users to tab through invisible elements.
+**Action:** Always complement visually hidden menus with `aria-hidden={!isOpen}` on the container and conditionally set `tabIndex={isOpen ? 0 : -1}` on the focusable children to ensure they are fully removed from the accessibility tree and tab order.
