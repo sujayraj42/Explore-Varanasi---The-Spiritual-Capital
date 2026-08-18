@@ -19,6 +19,18 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
+  // Close menu on Escape key press
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isMenuOpen]);
+
   // Scroll spy
   useEffect(() => {
     const sections = document.querySelectorAll('section[id]');
@@ -95,6 +107,8 @@ export default function Navbar() {
           className={`${styles.hamburger} ${isMenuOpen ? styles.open : ''}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle navigation menu"
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
         >
           <span />
           <span />
@@ -103,12 +117,14 @@ export default function Navbar() {
       </div>
 
       <div
+        id="mobile-menu"
         className={styles.mobileMenu}
         style={{
           transform: isMenuOpen ? 'translateY(0)' : 'translateY(-100%)',
           opacity: isMenuOpen ? 1 : 0,
           pointerEvents: isMenuOpen ? 'all' : 'none',
         }}
+        aria-hidden={!isMenuOpen}
       >
         {NAV_LINKS.map((link) => (
           <a
@@ -116,6 +132,7 @@ export default function Navbar() {
             href={link.href}
             className={styles.mobileLink}
             onClick={(e) => handleLinkClick(e, link.href)}
+            tabIndex={isMenuOpen ? 0 : -1}
           >
             {link.label}
           </a>
@@ -124,6 +141,7 @@ export default function Navbar() {
           href="#visit"
           className={styles.mobileCta}
           onClick={(e) => handleLinkClick(e, '#visit')}
+          tabIndex={isMenuOpen ? 0 : -1}
         >
           Plan Your Visit
         </a>
