@@ -95,6 +95,7 @@ export default function Navbar() {
           className={`${styles.hamburger} ${isMenuOpen ? styles.open : ''}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle navigation menu"
+          aria-expanded={isMenuOpen}
         >
           <span />
           <span />
@@ -108,7 +109,9 @@ export default function Navbar() {
           transform: isMenuOpen ? 'translateY(0)' : 'translateY(-100%)',
           opacity: isMenuOpen ? 1 : 0,
           pointerEvents: isMenuOpen ? 'all' : 'none',
+          visibility: isMenuOpen ? 'visible' : 'hidden',
         }}
+        aria-hidden={!isMenuOpen}
       >
         {NAV_LINKS.map((link) => (
           <a
