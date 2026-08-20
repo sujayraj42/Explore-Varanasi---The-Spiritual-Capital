@@ -1,0 +1,3 @@
+## 2024-05-24 - Avoid Returning Raw Scroll Position from Hooks
+**Learning:** Returning a raw `scrollY` number from a custom hook like `useScrollPosition` causes the consuming component (e.g., `Navbar`) to re-render on every single scroll frame, even if the value is only used for a binary visual state like `isScrolled > 80`. This is a massive performance bottleneck on scroll events.
+**Action:** Instead of returning raw scroll coordinates, hooks should accept a threshold and return a boolean state. React will automatically bail out of re-rendering if the new boolean state matches the previous boolean state, effectively throttling renders to only occur when crossing the threshold boundary.
