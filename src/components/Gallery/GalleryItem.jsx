@@ -24,7 +24,13 @@ export default function GalleryItem({ item, delay }) {
           <div className={styles.overlayContent}>
             <h4 className={styles.title}>{item.title}</h4>
             <p className={styles.caption}>{item.caption}</p>
-            <span className={styles.viewBtn}>View →</span>
+            <button
+              type="button"
+              className={styles.viewBtn}
+              aria-label={`View full image of ${item.title}`}
+            >
+              View →
+            </button>
           </div>
         </div>
       </div>
