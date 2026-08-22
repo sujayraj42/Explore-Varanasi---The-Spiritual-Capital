@@ -38,6 +38,18 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, []);
 
+  // Close menu on escape key
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isMenuOpen]);
+
   function handleLinkClick(e, href) {
     e.preventDefault();
     const id = href.replace('#', '');
@@ -95,15 +107,19 @@ export default function Navbar() {
           className={`${styles.hamburger} ${isMenuOpen ? styles.open : ''}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle navigation menu"
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-navigation"
         >
-          <span />
-          <span />
-          <span />
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
         </button>
       </div>
 
       <div
+        id="mobile-navigation"
         className={styles.mobileMenu}
+        aria-hidden={!isMenuOpen}
         style={{
           transform: isMenuOpen ? 'translateY(0)' : 'translateY(-100%)',
           opacity: isMenuOpen ? 1 : 0,
