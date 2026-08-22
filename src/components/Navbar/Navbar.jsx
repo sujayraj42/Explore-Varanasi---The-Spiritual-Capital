@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import useScrollPosition from '../../hooks/useScrollPosition';
+import useScrollThreshold from '../../hooks/useScrollThreshold';
 import styles from './Navbar.module.css';
 
 const NAV_LINKS = [
@@ -14,8 +14,10 @@ const NAV_LINKS = [
 ];
 
 export default function Navbar() {
-  const scrollY = useScrollPosition();
-  const isScrolled = scrollY > 80;
+  // ⚡ Bolt: Using boolean threshold hook instead of raw scrollY hook
+  // This reduces Navbar re-renders from ~60fps while scrolling to just 2 re-renders
+  // (once when passing 80px down, once when passing 80px up).
+  const isScrolled = useScrollThreshold(80);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
