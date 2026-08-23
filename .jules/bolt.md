@@ -1,0 +1,3 @@
+## 2024-05-24 - Avoiding Raw Scroll Positions in Custom Hooks
+**Learning:** Returning raw `scrollY` positions from a custom hook like `useScrollPosition` causes excessive and unnecessary React re-renders in every component that uses it, even if the component only needs to know when a specific threshold is crossed (e.g., to apply a background class).
+**Action:** Refactor such hooks into threshold-based boolean states (e.g., `useIsScrolled(threshold)`). This ensures the component only re-renders when the scroll position actually crosses the required threshold, significantly improving frontend performance and reducing React rendering overhead.
