@@ -14,8 +14,8 @@ const NAV_LINKS = [
 ];
 
 export default function Navbar() {
-  const scrollY = useScrollPosition();
-  const isScrolled = scrollY > 80;
+  // Use optimized scroll position hook which only re-renders when threshold (80) is crossed
+  const isScrolled = useScrollPosition(80);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 

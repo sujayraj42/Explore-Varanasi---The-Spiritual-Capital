@@ -1,0 +1,3 @@
+## 2025-02-28 - Optimizing useScrollPosition Hook
+**Learning:** Returning a raw scroll position (like `window.scrollY`) from a custom hook (`useScrollPosition`) is an anti-pattern. Doing this forces every component relying on the hook (like `Navbar`) to re-render constantly on every scroll event (up to 60fps), which creates massive performance overhead.
+**Action:** When a component only cares if the scroll position has passed a certain threshold, the custom hook should accept that threshold and return a boolean. This leverages React's built-in state update bailout (only re-rendering when the boolean state flips between false/true), drastically reducing re-renders on scroll.
