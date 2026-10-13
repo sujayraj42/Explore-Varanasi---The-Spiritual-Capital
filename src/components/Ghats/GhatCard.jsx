@@ -40,7 +40,11 @@ export default function GhatCard({ ghat, delay }) {
           <span>{ghat.bestTime}</span>
         </div>
 
-        <a href={`#ghat-${ghat.id}`} className={styles.link}>
+        <a
+          href={`#ghat-${ghat.id}`}
+          className={styles.link}
+          aria-label={`Explore ${ghat.name}`}
+        >
           Explore Ghat →
         </a>
       </div>
