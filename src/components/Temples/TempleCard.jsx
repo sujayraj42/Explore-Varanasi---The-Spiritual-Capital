@@ -35,7 +35,11 @@ export default function TempleCard({ temple, delay }) {
         <h3 className={styles.name}>{temple.name}</h3>
         <p className={styles.description}>{temple.description}</p>
 
-        <a href={`#temple-${temple.id}`} className={styles.link}>
+        <a
+          href={`#temple-${temple.id}`}
+          className={styles.link}
+          aria-label={`Visit ${temple.name}`}
+        >
           Visit Temple →
         </a>
       </div>
