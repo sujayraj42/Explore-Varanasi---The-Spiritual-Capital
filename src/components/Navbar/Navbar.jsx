@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import useScrollPosition from '../../hooks/useScrollPosition';
+import useIsScrolled from '../../hooks/useIsScrolled';
 import styles from './Navbar.module.css';
 
 const NAV_LINKS = [
@@ -14,8 +14,7 @@ const NAV_LINKS = [
 ];
 
 export default function Navbar() {
-  const scrollY = useScrollPosition();
-  const isScrolled = scrollY > 80;
+  const isScrolled = useIsScrolled(80);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
