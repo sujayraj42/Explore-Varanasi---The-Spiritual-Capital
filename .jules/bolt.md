@@ -1,0 +1,3 @@
+## 2024-10-15 - Prevent excessive React re-renders with scroll hooks
+**Learning:** Returning a raw integer value (like `window.scrollY`) from a custom hook causes consumers to re-render on every single scroll frame. Also, using `window` APIs directly in `useState` initialization without a safety check (`typeof window !== 'undefined'`) can cause issues if SSR is ever introduced or static builds are run in environments missing the `window` object.
+**Action:** When tracking scroll progress for simple visual toggles (like navbars appearing past a certain point), update the custom hook to accept a threshold and return a boolean instead. Ensure initial state safely handles `window` by checking if it is defined.
