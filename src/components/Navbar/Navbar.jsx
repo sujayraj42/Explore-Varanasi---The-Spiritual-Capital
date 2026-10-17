@@ -95,6 +95,7 @@ export default function Navbar() {
           className={`${styles.hamburger} ${isMenuOpen ? styles.open : ''}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle navigation menu"
+          aria-expanded={isMenuOpen}
         >
           <span />
           <span />
@@ -104,6 +105,7 @@ export default function Navbar() {
 
       <div
         className={styles.mobileMenu}
+        inert={!isMenuOpen ? '' : undefined}
         style={{
           transform: isMenuOpen ? 'translateY(0)' : 'translateY(-100%)',
           opacity: isMenuOpen ? 1 : 0,
