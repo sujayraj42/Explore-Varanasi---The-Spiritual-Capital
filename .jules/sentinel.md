@@ -1,0 +1,4 @@
+## 2025-02-27 - Content Security Policy (CSP) implementation via meta tag
+**Vulnerability:** The application was missing a Content Security Policy, making it susceptible to XSS, code injection, and data exfiltration if any unsanitized user inputs were later introduced.
+**Learning:** When deploying a CSP via an HTML `<meta>` tag instead of an HTTP header, the `frame-ancestors` directive (which provides clickjacking protection similar to `X-Frame-Options`) is ignored by the browser. Including it only generates console warnings.
+**Prevention:** Only include `frame-ancestors` in CSP when it can be delivered via HTTP headers (e.g. from the web server or CDN config). In static applications using a `<meta>` tag for CSP, rely on alternative methods for clickjacking defense if required.
