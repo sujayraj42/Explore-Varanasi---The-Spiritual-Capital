@@ -1,0 +1,3 @@
+## 2024-10-19 - Mobile Menu Animation and Accessibility
+**Learning:** When animating a hidden mobile menu with CSS transforms (`translateY(-100%)`), using `pointer-events: none` is not sufficient for accessibility because the hidden links remain in the accessibility tree and keyboard tab order, leading to focus being trapped off-screen.
+**Action:** Use the `inert` attribute (e.g., `inert={!isOpen ? "" : undefined}`) to completely remove the element and its children from the accessibility tree and keyboard navigation while preserving smooth CSS transitions. Note that `visibility: hidden` causes animation cutoffs, making `inert` the preferred solution.
