@@ -1,7 +1,15 @@
 import { useState, useEffect } from 'react';
 
-export default function useScrollPosition() {
-  const [scrollY, setScrollY] = useState(0);
+/**
+ * Custom hook to track whether the scroll position has passed a certain threshold.
+ * ⚡ Bolt: Returns a boolean instead of a raw scrollY integer to prevent the consuming
+ * component from re-rendering on every single scroll frame. React will automatically
+ * bail out of rendering if the boolean state hasn't changed.
+ */
+export default function useScrollPosition(threshold = 0) {
+  const [isPastThreshold, setIsPastThreshold] = useState(
+    typeof window !== 'undefined' ? window.scrollY > threshold : false
+  );
 
   useEffect(() => {
     let ticking = false;
@@ -9,7 +17,7 @@ export default function useScrollPosition() {
     function handleScroll() {
       if (!ticking) {
         requestAnimationFrame(() => {
-          setScrollY(window.scrollY);
+          setIsPastThreshold(window.scrollY > threshold);
           ticking = false;
         });
         ticking = true;
@@ -22,7 +30,7 @@ export default function useScrollPosition() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [threshold]);
 
-  return scrollY;
+  return isPastThreshold;
 }
