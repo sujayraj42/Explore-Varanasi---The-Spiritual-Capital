@@ -1,0 +1,3 @@
+## 2026-10-21 - [Avoid Raw Pixels in React State for Scroll Positions]
+**Learning:** Returning raw scroll pixels from custom hooks (like `useScrollPosition`) and using them in components directly triggers re-renders on every single scroll tick (up to 60 times per second), drastically reducing performance.
+**Action:** Always compute threshold-based boolean states inside the hook instead. React's state bailout will then prevent the component from re-rendering unless the threshold is actually crossed.
