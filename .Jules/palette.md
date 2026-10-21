@@ -1,0 +1,3 @@
+## 2025-01-20 - Use inert for dynamic mobile menus
+**Learning:** When hiding off-screen elements like mobile menus, using `opacity: 0` or `transform` alone still leaves elements focusable by keyboard, violating accessibility rules. Using `visibility: hidden` works but cuts off CSS transitions prematurely.
+**Action:** Use the HTML `inert` attribute (`inert={!isOpen ? "" : undefined}`) on the menu container to remove it from keyboard focus and assistive technology when visually hidden, while keeping CSS transitions perfectly smooth.
