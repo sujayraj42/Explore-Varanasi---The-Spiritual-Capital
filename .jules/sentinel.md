@@ -1,0 +1,4 @@
+## 2026-10-21 - Content Security Policy for Vite React App
+**Vulnerability:** Missing Content Security Policy (CSP) leaving the application vulnerable to Cross-Site Scripting (XSS) and data injection attacks.
+**Learning:** When configuring a CSP for a Vite development environment, it is crucial to allow 'unsafe-inline' for both scripts and styles to support Vite's build process and development server. Additionally, `connect-src` must explicitly allow `ws:` and `wss:` to enable Hot Module Replacement (HMR) to function without being blocked by the browser. `frame-ancestors` directive should not be used in `<meta>` tags.
+**Prevention:** Always implement a foundational CSP early in the project lifecycle, ensuring the policy is tailored to the specific build tool (e.g., Vite) and its requirements for local development and production builds.
