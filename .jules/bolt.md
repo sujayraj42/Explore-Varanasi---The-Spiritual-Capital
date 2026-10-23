@@ -1,0 +1,3 @@
+## 2024-05-24 - Returning raw scrollY in hooks causes excessive re-renders
+**Learning:** Returning `scrollY` from a custom hook and checking it against a threshold in the component causes the component to re-render on *every* scroll event (since `scrollY` changes constantly), even if the boolean result of `scrollY > threshold` hasn't changed.
+**Action:** Instead of returning raw scroll values, pass the threshold into the hook and have the hook return a boolean (`isScrolled`). This ensures the component only re-renders when the threshold is crossed, massively reducing re-renders on scroll-heavy pages.
