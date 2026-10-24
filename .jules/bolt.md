@@ -1,0 +1,3 @@
+## 2023-10-24 - Avoid returning continuous values in scroll hooks
+**Learning:** Returning `scrollY` values from custom hooks (like `useScrollPosition`) triggers excessive re-renders (O(N) with N being scroll events) in consuming components, causing noticeable lag on lower-end devices. React state bail-out (returning a boolean) is significantly more performant.
+**Action:** Use threshold-based boolean states inside custom scroll hooks (`isPastThreshold`) instead of raw values (`scrollY`). Ensure hooks with `window` initialization use safety checks (`typeof window !== 'undefined'`) to prevent SSR errors.
