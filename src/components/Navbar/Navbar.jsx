@@ -95,6 +95,8 @@ export default function Navbar() {
           className={`${styles.hamburger} ${isMenuOpen ? styles.open : ''}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle navigation menu"
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
         >
           <span />
           <span />
@@ -103,12 +105,14 @@ export default function Navbar() {
       </div>
 
       <div
+        id="mobile-menu"
         className={styles.mobileMenu}
         style={{
           transform: isMenuOpen ? 'translateY(0)' : 'translateY(-100%)',
           opacity: isMenuOpen ? 1 : 0,
           pointerEvents: isMenuOpen ? 'all' : 'none',
         }}
+        inert={!isMenuOpen ? "" : undefined}
       >
         {NAV_LINKS.map((link) => (
           <a
